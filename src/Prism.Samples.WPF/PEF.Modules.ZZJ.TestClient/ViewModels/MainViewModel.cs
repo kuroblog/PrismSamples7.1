@@ -53,5 +53,40 @@ namespace PEF.Modules.ZZJ.TestClient.ViewModels
             //this.eventAggregator.GetEvent<ReceivedDataEvent>().Subscribe(ReceivedDataHandler);
         }
 
+        public DelegateCommand<object> LoadedCommand => new DelegateCommand<object>(arg =>
+        {
+            //Task.Factory.StartNew(() =>
+            //{
+            //    for (; ; )
+            //    {
+            //        MainDispatcherInvoke(() => Time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
+            //        Task.Delay(TimeSpan.FromSeconds(1)).Wait();
+            //    }
+            //});
+
+            //State = deviceProxy.State.ToString();
+            //Sessions.Clear();
+
+            //var serverJson = config.ReadAllText(Assembly.GetExecutingAssembly().Location.Replace("dll", "json"));
+
+            //var items = serverJson.GetJsonObject<ServerItem[]>();
+            //if (items != null && items.Any())
+            //{
+            //    ServerItems = new ObservableCollection<ServerItem>(items);
+            //    if (SelectedServer == null)
+            //    {
+            //        SelectedServer = ServerItems?.FirstOrDefault();
+            //    }
+
+            //    SelectedServerChangedCommand.Execute(SelectedServer);
+            //}
+        });
+
+        public DelegateCommand ResetCommand => new DelegateCommand(() => { });
+
+        public DelegateCommand DebugCommand => new DelegateCommand(() => { });
+
+        public DelegateCommand HelperCommand => new DelegateCommand(() => MainDispatcher.Value.ShowMessage<INotification>(config.Version));
     }
 }

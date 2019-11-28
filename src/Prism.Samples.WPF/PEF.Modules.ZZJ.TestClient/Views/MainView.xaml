@@ -20,32 +20,58 @@
     </i:Interaction.Triggers>
 
     <UserControl.Resources>
-        <Style TargetType="ComboBox">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="MinWidth" Value="130"/>
-            <Setter Property="Margin" Value="1"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PEF.Common;component/Assets/Styles/Fonts.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
 
-        <Style TargetType="Button">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="MinWidth" Value="110"/>
-            <Setter Property="Margin" Value="1"/>
-        </Style>
+            <Style TargetType="ComboBox">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="MinWidth" Value="130"/>
+                <Setter Property="Margin" Value="1"/>
+                <Setter Property="FontFamily" Value="{StaticResource DefaultFont}"/>
+            </Style>
 
-        <Style TargetType="TextBlock">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="TextAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="1"/>
-        </Style>
+            <Style TargetType="Button">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="MinWidth" Value="110"/>
+                <Setter Property="Margin" Value="1"/>
+                <Setter Property="FontFamily" Value="{StaticResource DefaultFont}"/>
+            </Style>
 
-        <Style TargetType="TextBox">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="MinWidth" Value="120"/>
-            <Setter Property="Margin" Value="1"/>
-        </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="TextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="1"/>
+                <Setter Property="FontFamily" Value="{StaticResource DefaultFont}"/>
+            </Style>
+
+            <Style TargetType="TextBox">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="MinWidth" Value="120"/>
+                <Setter Property="Margin" Value="1"/>
+                <Setter Property="FontFamily" Value="{StaticResource DefaultFont}"/>
+            </Style>
+
+            <Style TargetType="GroupBox">
+                <Setter Property="FontFamily" Value="{StaticResource DefaultFont}"/>
+            </Style>
+        </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid>
+    <DockPanel>
+        <GroupBox Header="interface" DockPanel.Dock="Top">
+            <DockPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+                    <Button Content="Reset" MinWidth="20" Command="{Binding ResetCommand}"/>
+                    <Button Content="Debug" MinWidth="20" Command="{Binding DebugCommand}"/>
+                    <Button Content="?" MinWidth="20" Command="{Binding HelperCommand}"/>
+                </StackPanel>
 
-    </Grid>
+                <StackPanel Orientation="Horizontal"></StackPanel>
+            </DockPanel>
+        </GroupBox>
+
+        <Grid></Grid>
+    </DockPanel>
 </UserControl>

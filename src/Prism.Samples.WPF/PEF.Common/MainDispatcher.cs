@@ -33,5 +33,23 @@ namespace PEF.Common
                 Callback = action
             });
         }
+
+        //eventAggregator.GetEvent<MessagePopupEvent>().Publish(new PopupEventArg<INotification>
+        //    {
+        //        Title = title,
+        //        Content = message,
+        //        Callback = new Action<INotification>(res => { })
+        //    });
+
+        public void ShowMessage<TCallback>(string message, string title = "info", Action<TCallback> callbackHandler = null)
+            where TCallback : INotification
+        {
+            Container?.Resolve<IEventAggregator>()?.GetEvent<PubSubEvent<PopupEventArg<TCallback>>>()?.Publish(new PopupEventArg<TCallback>
+            {
+                Title = title,
+                Content = message,
+                Callback = callbackHandler
+            });
+        }
     }
 }

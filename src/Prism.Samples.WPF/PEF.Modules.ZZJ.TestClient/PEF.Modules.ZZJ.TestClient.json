@@ -1,0 +1,20 @@
+﻿[
+  {
+    "key": "Script1",
+    "name": "基础接口",
+    "port": 8080,
+    "url": "hoschange/ShoeBox"
+  },
+  {
+    "key": "Script2",
+    "name": "预约接口",
+    "port": 8080,
+    "url": "hoschange/Auth"
+  },
+  {
+    "key": "Script3",
+    "name": "支付接口",
+    "port": 8080,
+    "url": "hoschange/RecyclingBin"
+  }
+]
