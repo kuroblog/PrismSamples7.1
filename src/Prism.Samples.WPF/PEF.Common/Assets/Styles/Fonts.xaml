@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ms="clr-namespace:System;assembly=mscorlib">
+    <!-- 宋体 -->
+    <FontFamily x:Key="SimsunFont">Simsun</FontFamily>
+    <!-- 新宋体 -->
+    <FontFamily x:Key="NSimsunFont">NSimsun</FontFamily>
+    <!-- 细明体 -->
+    <FontFamily x:Key="MingLiuFont">MingLiu</FontFamily>
+    <!-- 楷体 -->
+    <FontFamily x:Key="KaiTiFont">KaiTi</FontFamily>
+    <!-- 黑体 -->
+    <FontFamily x:Key="SimHeiFont">SimHei</FontFamily>
+    <!-- 仿宋 -->
+    <FontFamily x:Key="FangSongFont">FangSong</FontFamily>
+    <!-- 微软正黑体 -->
+    <FontFamily x:Key="MsJHFont">Microsoft JhengHei</FontFamily>
+    <!-- 微软雅黑 -->
+    <FontFamily x:Key="MsYHFont">Microsoft YaHei</FontFamily>
+
+    <!-- 默认字体 -->
+    <FontFamily x:Key="DefaultFont">NSimSun</FontFamily>
+
+    <ms:Double x:Key="SmallFontSize">9</ms:Double>
+    <ms:Double x:Key="NormalFontSize">11</ms:Double>
+    <ms:Double x:Key="LargeFontSize">14</ms:Double>
+    <ms:Double x:Key="HeaderFontSize">18</ms:Double>
+    <ms:Double x:Key="CaptionFontSize">22</ms:Double>
+
+    <ms:Double x:Key="DefaultFontSize">11</ms:Double>
+
+</ResourceDictionary>

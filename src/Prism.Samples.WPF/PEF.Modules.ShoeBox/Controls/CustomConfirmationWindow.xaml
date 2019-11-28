@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="PEF.Modules.ShoeBox.Controls.CustomConfirmationWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ctl="clr-namespace:PEF.Common.Controls;assembly=PEF.Common"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             d:DesignWidth="710" d:DesignHeight="425">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PEF.Common;component/Assets/Styles/Buttons.xaml"/>
+                <!--<ResourceDictionary Source="/PEF.Common;component/Assets/Styles/TextBlocks.xaml"/>-->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <prism:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Unloaded">
+            <prism:InvokeCommandAction Command="{Binding UnloadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="84*"/>
+            <RowDefinition Height="221*"/>
+            <RowDefinition Height="120*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.Resources>
+            <Style TargetType="ctl:CustomButton" BasedOn="{StaticResource DefaultCustomButton}">
+                <Setter Property="Background" Value="#FFE0E0E0"/>
+                <Setter Property="CustomCornerRadius" Value="10,10,10,10"/>
+                <Setter Property="FontSize" Value="40"/>
+            </Style>
+        </Grid.Resources>
+
+        <Border Grid.Row="0"
+                CornerRadius="10,10,0,0"
+                Padding="5"
+                Background="#FFEED31C">
+            <TextBlock Text="{Binding Notification.Title, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
+        </Border>
+
+        <Border Grid.Row="1"
+                Background="#FFFFFFFF">
+            <TextBlock Text="{Binding Notification.Content, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
+        </Border>
+
+        <Border Grid.Row="2"
+                CornerRadius="0,0,10,10"
+                Padding="5"
+                Background="#FFFFFFFF">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <ctl:CustomButton Grid.Column="0" 
+                                  Margin="35,1,15,24" 
+                                  Background="#FF5FB953" 
+                                  Content="{Binding ConfirmTitle, Mode=OneWay}" 
+                                  Command="{Binding ConfirmCommand}"/>
+
+                <ctl:CustomButton Grid.Column="1" 
+                                  Margin="35,1,15,24" 
+                                  Content="{Binding CancelTitle, Mode=OneWay}" 
+                                  Command="{Binding CancelCommand}"/>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

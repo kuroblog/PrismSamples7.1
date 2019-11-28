@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="PEF.Modules.AuthTerminal.Views.ScanView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:com="clr-namespace:PEF.Common;assembly=PEF.Common"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             Background="#FFC2D0E8"
+             mc:Ignorable="d" 
+             d:DesignHeight="844" d:DesignWidth="1280">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <prism:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Image Source="/PEF.Modules.AuthTerminal;component/Assets/Images/Img4.png" Stretch="Fill"/>
+    </Grid>
+</UserControl>

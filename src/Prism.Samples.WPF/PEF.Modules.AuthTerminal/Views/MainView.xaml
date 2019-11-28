@@ -1,0 +1,134 @@
+﻿<UserControl x:Class="PEF.Modules.AuthTerminal.Views.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:com="clr-namespace:PEF.Common;assembly=PEF.Common"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             d:DesignWidth="1280" d:DesignHeight="1024">
+    <!--xmlns:cctl="clr-namespace:PEF.Modules.ShoeBox.Controls"-->
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <prism:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </i:EventTrigger>
+
+        <!--<prism:InteractionRequestTrigger SourceObject="{Binding CustomNotificationRequest}">
+            <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True">
+                <prism:PopupWindowAction.WindowStyle>
+                    <Style TargetType="Window">
+                        <Setter Property="WindowStyle" Value="None"/>
+                        <Setter Property="AllowsTransparency" Value="True"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        -->
+        <!--<Setter Property="Width" Value="{Binding Width, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"/>-->
+        <!--
+                        <Setter Property="Width" Value="710"/>
+                        -->
+        <!--<Setter Property="Height" Value="{Binding Height, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"/>-->
+        <!--
+                        <Setter Property="Height" Value="425"/>
+                        -->
+        <!--<Setter Property="Opacity" Value=".4"/>-->
+        <!--<Style.Triggers>
+                            <EventTrigger RoutedEvent="Loaded">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation To=".3"
+                                                             Storyboard.TargetProperty="Opacity" 
+                                                             Storyboard.Target="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </Style.Triggers>-->
+        <!--
+                    </Style>
+                </prism:PopupWindowAction.WindowStyle>
+                <prism:PopupWindowAction.WindowContent>
+                    <cctl:CustomNotificationWindow>
+                        -->
+        <!--<i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:EventTrigger.Actions>
+                                </i:EventTrigger.Actions>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>-->
+        <!--
+                    </cctl:CustomNotificationWindow>
+                </prism:PopupWindowAction.WindowContent>
+            </prism:PopupWindowAction>
+        </prism:InteractionRequestTrigger>-->
+
+        <!--<prism:InteractionRequestTrigger SourceObject="{Binding CustomConfirmationRequest}">
+            <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True">
+                <prism:PopupWindowAction.WindowStyle>
+                    <Style TargetType="Window">
+                        <Setter Property="WindowStyle" Value="None"/>
+                        <Setter Property="AllowsTransparency" Value="True"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Width" Value="710"/>
+                        <Setter Property="Height" Value="425"/>
+                    </Style>
+                </prism:PopupWindowAction.WindowStyle>
+                <prism:PopupWindowAction.WindowContent>
+                    <cctl:CustomConfirmationWindow>
+                    </cctl:CustomConfirmationWindow>
+                </prism:PopupWindowAction.WindowContent>
+            </prism:PopupWindowAction>
+        </prism:InteractionRequestTrigger>-->
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="132*"/>
+            <RowDefinition Height="844*"/>
+            <RowDefinition Height="48*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Image Source="/PEF.Modules.AuthTerminal;component/Assets/Images/Img1.png" Stretch="Fill"/>
+
+            <Button Command="{Binding AuthUserCommand}" HorizontalAlignment="Right" Margin="0,0,25,0" Visibility="{Binding AuthUserCommandState, Mode=OneWay}">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Grid>
+                            <Image Source="/PEF.Modules.AuthTerminal;component/Assets/Images/Img6.png"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Command="{Binding ReturnCommand}" HorizontalAlignment="Right" Margin="0,0,25,0" Visibility="{Binding ReturnCommandState, Mode=OneWay}">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Grid>
+                            <Image Source="/PEF.Modules.AuthTerminal;component/Assets/Images/Img7.png"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+
+        <Image Grid.Row="2" 
+               Source="/PEF.Modules.AuthTerminal;component/Assets/Images/Img2.png" Stretch="Fill"/>
+
+        <Border Grid.Row="1" Background="#FFC2D0E8">
+            <ContentControl prism:RegionManager.RegionName="{x:Static com:RegionNames.Home}"
+                            VerticalContentAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"/>
+        </Border>
+    </Grid>
+</UserControl>

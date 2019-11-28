@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="PEF.Common.Controls.CustomPopupWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:com="clr-namespace:PEF.Common;assembly=PEF.Common"
+             xmlns:ctl="clr-namespace:PEF.Common.Controls"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             d:DesignWidth="300" d:DesignHeight="200">
+
+    <!--<UserControl.Background>
+        <SolidColorBrush Color="#FFFFFFFF"/>
+    </UserControl.Background>-->
+
+    <DockPanel>
+        <!--<Button DockPanel.Dock="Bottom" Margin="60,25" Content="Accept" FontSize="28" Command="{Binding ConfirmCommand}"/>-->
+
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="FontSize" Value="22"/>
+                    <Setter Property="Margin" Value="20,25"/>
+                </Style>
+            </Grid.Resources>
+
+            <Button Grid.Column="0" Content="Confirm" Command="{Binding ConfirmCommand}"/>
+            <Button Grid.Column="1" Content="Cancel" Command="{Binding CancelCommand}"/>
+        </Grid>
+
+        <TextBlock Text="{Binding Notification.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32"/>
+    </DockPanel>
+</UserControl>

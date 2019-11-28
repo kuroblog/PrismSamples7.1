@@ -1,0 +1,51 @@
+﻿[
+  {
+    "key": "s1",
+    "action": "UploadDeviceInfo",
+    "name": "FrontInfo",
+    "data": {
+      "Method": "FrontInfo",
+      "Parameter": {
+        "DeviceType": "Auth",
+        "DeviceVersion": "1",
+        "DeviceID": "FKQ001"
+      }
+    }
+  },
+  {
+    "key": "s2",
+    "action": "UploadCardInfo",
+    "name": "ReadCard/Admin",
+    "data": {
+      "Method": "ReadCard",
+      "Parameter": {
+        "CardID": "123456",
+        "ReadStyle": "0"
+      }
+    }
+  },
+  {
+    "key": "s3",
+    "action": "UploadCardInfo",
+    "name": "ReadCard/Guest1",
+    "data": {
+      "Method": "ReadCard",
+      "Parameter": {
+        "CardID": "G001",
+        "ReadStyle": "1"
+      }
+    }
+  },
+  {
+    "key": "s4",
+    "action": "UploadCardInfo",
+    "name": "ReadCard/Guest2",
+    "data": {
+      "Method": "ReadCard",
+      "Parameter": {
+        "CardID": "G002",
+        "ReadStyle": "1"
+      }
+    }
+  }
+]

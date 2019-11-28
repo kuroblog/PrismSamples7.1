@@ -1,0 +1,404 @@
+﻿<UserControl x:Class="PEF.Modules.SGDE.Views.SizeConfigView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:com="clr-namespace:PEF.Common;assembly=PEF.Common"
+             xmlns:ctl="clr-namespace:PEF.Common.Controls;assembly=PEF.Common"
+             xmlns:cctl="clr-namespace:PEF.Modules.SGDE.Controls"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:cov="clr-namespace:PEF.Modules.SGDE.Converters"
+             mc:Ignorable="d" 
+             d:DesignWidth="1080" d:DesignHeight="1920">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PEF.Common;component/Assets/Styles/Buttons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <cov:SizeQuantityRowHeightConverter x:Key="SizeQuantityRowHeightConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <prism:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </i:EventTrigger>
+
+        <prism:InteractionRequestTrigger SourceObject="{Binding CustomPopupRequest}">
+            <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True">
+                <prism:PopupWindowAction.WindowStyle>
+                    <Style TargetType="Window">
+                        <Setter Property="WindowStyle" Value="None"/>
+                        <Setter Property="AllowsTransparency" Value="True"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <!--<Setter Property="Width" Value="{Binding Width, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"/>-->
+                        <Setter Property="Width" Value="600"/>
+                        <!--<Setter Property="Height" Value="{Binding Height, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"/>-->
+                        <Setter Property="Height" Value="500"/>
+                        <!--<Setter Property="Opacity" Value=".4"/>-->
+                        <!--<Style.Triggers>
+                            <EventTrigger RoutedEvent="Loaded">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation To=".3"
+                                                             Storyboard.TargetProperty="Opacity" 
+                                                             Storyboard.Target="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </Style.Triggers>-->
+                    </Style>
+                </prism:PopupWindowAction.WindowStyle>
+                <prism:PopupWindowAction.WindowContent>
+                    <cctl:ItemConfigWindow>
+                        <!--<i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:EventTrigger.Actions>
+                                </i:EventTrigger.Actions>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>-->
+                    </cctl:ItemConfigWindow>
+                </prism:PopupWindowAction.WindowContent>
+            </prism:PopupWindowAction>
+        </prism:InteractionRequestTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="138*"/>
+            <RowDefinition Height="991*"/>
+            <RowDefinition Height="95*"/>
+            <RowDefinition Height="520*"/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0" 
+               Source="/PEF.Modules.SGDE;component/Assets/Images/Ttile2.png"
+               Stretch="Fill"/>
+
+        <Grid Grid.Row="3"
+              Background="#FFFFFFFF">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="73*"/>
+                <RowDefinition Height="110*"/>
+                <RowDefinition Height="36*"/>
+                <RowDefinition Height="110*"/>
+                <RowDefinition Height="36*"/>
+                <RowDefinition Height="110*"/>
+                <RowDefinition Height="52*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="86*"/>
+                <ColumnDefinition Width="492*"/>
+                <ColumnDefinition Width="113*"/>
+                <ColumnDefinition Width="298*"/>
+                <ColumnDefinition Width="69*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.Resources>
+                <Style TargetType="ctl:CustomButton" BasedOn="{StaticResource DefaultCustomButton}">
+                    <Setter Property="Background" Value="#FF389CF0"/>
+                    <Setter Property="Foreground" Value="#FFFFFFFF"/>
+                    <Setter Property="CustomCornerRadius" Value="10"/>
+                    <Setter Property="FontSize" Value="36"/>
+                </Style>
+            </Grid.Resources>
+
+            <ctl:CustomButton Grid.Row="1"
+                              Grid.Column="3"
+                              Content="一键清空"
+                              Command="{Binding AllCleanCommand}"/>
+
+            <ctl:CustomButton Grid.Row="3"
+                              Grid.Column="3"
+                              Content="一键加满"
+                              Command="{Binding AllFillCommand}"/>
+
+            <ctl:CustomButton Grid.Row="5"
+                              Grid.Column="3"
+                              Content="完成"
+                              Command="{Binding DoneCommand}"
+                              Background="#FF1B9A30"/>
+
+            <Grid Grid.Row="1"
+                  Grid.RowSpan="5"
+                  Grid.Column="1">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="84"/>
+                    <RowDefinition Height="{Binding SqItemI.Size, Mode=OneWay, Converter={StaticResource SizeQuantityRowHeightConverter}}"/>
+                    <RowDefinition Height="{Binding SqItemII.Size, Mode=OneWay, Converter={StaticResource SizeQuantityRowHeightConverter}}"/>
+                    <RowDefinition Height="{Binding SqItemIII.Size, Mode=OneWay, Converter={StaticResource SizeQuantityRowHeightConverter}}"/>
+                    <RowDefinition Height="{Binding SqItemIV.Size, Mode=OneWay, Converter={StaticResource SizeQuantityRowHeightConverter}}"/>
+                    <RowDefinition Height="{Binding SqItemV.Size, Mode=OneWay, Converter={StaticResource SizeQuantityRowHeightConverter}}"/>
+                    <RowDefinition Height="{Binding SqItemVI.Size, Mode=OneWay, Converter={StaticResource SizeQuantityRowHeightConverter}}"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200*"/>
+                    <ColumnDefinition Width="292*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="BorderBrush" Value="#FF9BADBE"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                    </Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="FontSize" Value="26"/>
+                    </Style>
+                </Grid.Resources>
+
+                <Border Grid.Row="0"
+                        Grid.Column="0"
+                        BorderThickness="1"
+                        Background="#FFB0BFD7">
+                    <TextBlock Text="尺码"
+                               FontWeight="Bold"/>
+                </Border>
+
+                <Border Grid.Row="0"
+                        Grid.Column="1"
+                        BorderThickness="1"
+                        Background="#FFB0BFD7">
+                    <TextBlock Text="数量"
+                               FontWeight="Bold"/>
+                </Border>
+
+                <Border Grid.Row="1"
+                        Grid.Column="0"
+                        BorderThickness="1">
+                    <TextBlock Text="{Binding SqItemI.Size, Mode=OneWay}" FontWeight="Bold"/>
+                </Border>
+
+                <Border Grid.Row="1"
+                        Grid.Column="1"
+                        BorderThickness="1">
+                    <TextBlock>
+                        <Run Text="{Binding SqItemI.Quantity, Mode=OneWay}"/>
+                        <Run Text="件"/>
+                    </TextBlock>
+                </Border>
+
+                <Border Grid.Row="2"
+                        Grid.Column="0"
+                        BorderThickness="1">
+                    <TextBlock Text="{Binding SqItemII.Size, Mode=OneWay}" FontWeight="Bold"/>
+                </Border>
+
+                <Border Grid.Row="2"
+                        Grid.Column="1"
+                        BorderThickness="1">
+                    <TextBlock>
+                        <Run Text="{Binding SqItemII.Quantity, Mode=OneWay}"/>
+                        <Run Text="件"/>
+                    </TextBlock>
+                </Border>
+
+                <Border Grid.Row="3"
+                        Grid.Column="0"
+                        BorderThickness="1">
+                    <TextBlock Text="{Binding SqItemIII.Size, Mode=OneWay}" FontWeight="Bold"/>
+                </Border>
+
+                <Border Grid.Row="3"
+                        Grid.Column="1"
+                        BorderThickness="1">
+                    <TextBlock>
+                        <Run Text="{Binding SqItemIII.Quantity, Mode=OneWay}"/>
+                        <Run Text="件"/>
+                    </TextBlock>
+                </Border>
+
+                <Border Grid.Row="4"
+                        Grid.Column="0"
+                        BorderThickness="1">
+                    <TextBlock Text="{Binding SqItemIV.Size, Mode=OneWay}" FontWeight="Bold"/>
+                </Border>
+
+                <Border Grid.Row="4"
+                        Grid.Column="1"
+                        BorderThickness="1">
+                    <TextBlock>
+                        <Run Text="{Binding SqItemIV.Quantity, Mode=OneWay}"/>
+                        <Run Text="件"/>
+                    </TextBlock>
+                </Border>
+
+                <Border Grid.Row="5"
+                        Grid.Column="0"
+                        BorderThickness="1">
+                    <TextBlock Text="{Binding SqItemV.Size, Mode=OneWay}" FontWeight="Bold"/>
+                </Border>
+
+                <Border Grid.Row="5"
+                        Grid.Column="1"
+                        BorderThickness="1">
+                    <TextBlock>
+                        <Run Text="{Binding SqItemV.Quantity, Mode=OneWay}"/>
+                        <Run Text="件"/>
+                    </TextBlock>
+                </Border>
+
+                <Border Grid.Row="6"
+                        Grid.Column="0"
+                        BorderThickness="1">
+                    <TextBlock Text="{Binding SqItemVI.Size, Mode=OneWay}" FontWeight="Bold"/>
+                </Border>
+
+                <Border Grid.Row="6"
+                        Grid.Column="1"
+                        BorderThickness="1">
+                    <TextBlock>
+                        <Run Text="{Binding SqItemVI.Quantity, Mode=OneWay}"/>
+                        <Run Text="件"/>
+                    </TextBlock>
+                </Border>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="145*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="145*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="145*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="145*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="145*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="145*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="75*"/>
+                <ColumnDefinition Width="280*"/>
+                <ColumnDefinition Width="46*"/>
+                <ColumnDefinition Width="280*"/>
+                <ColumnDefinition Width="46*"/>
+                <ColumnDefinition Width="280*"/>
+                <ColumnDefinition Width="75*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.Resources>
+                <Style TargetType="Border" x:Key="ItemTopBorder">
+                    <Setter Property="Background" Value="#FF3A9FF1"/>
+                    <Setter Property="CornerRadius" Value="10,10,0,0"/>
+                    <!--<Setter Property="BorderBrush" Value="#FFA5B2C8"/>-->
+                    <!--<Setter Property="BorderThickness" Value="1"/>-->
+                </Style>
+                <Style TargetType="Border" x:Key="ItemBottomBorder">
+                    <Setter Property="Background" Value="#FFFFFFFF"/>
+                    <Setter Property="CornerRadius" Value="0,0,10,10"/>
+                </Style>
+                <Style TargetType="TextBlock" x:Key="ItemTitleTextBlock">
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="FontSize" Value="28"/>
+                    <Setter Property="Foreground" Value="#FFFFFFFF"/>
+                </Style>
+                <Style TargetType="TextBlock" BasedOn="{StaticResource ItemTitleTextBlock}">
+                    <Setter Property="Foreground" Value="#FF000000"/>
+                </Style>
+                <cov:ItemConfigButtonVisibilityConverter x:Key="ItemConfigButtonVisibilityConverter"/>
+
+                <Style TargetType="{x:Type cctl:ItemConfigButton}">
+                    <Setter Property="Command" Value="{Binding DataContext.ItemConfigCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"/>
+                    <Setter Property="CommandParameter" Value="{Binding DataContext, RelativeSource={RelativeSource Mode=Self}}"/>
+                    <Setter Property="Visibility" Value="{Binding Size, Mode=OneWay, Converter={StaticResource ItemConfigButtonVisibilityConverter}}"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type cctl:ItemConfigButton}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="59*"/>
+                                        <RowDefinition Height="88*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Border Grid.Row="0" Style="{StaticResource ItemTopBorder}">
+                                        <TextBlock Style="{StaticResource ItemTitleTextBlock}" Text="{Binding Title}"/>
+                                    </Border>
+
+                                    <Border Grid.Row="1" Style="{StaticResource ItemBottomBorder}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Grid.Resources>
+                                                <Style TargetType="TextBlock" BasedOn="{StaticResource ItemTitleTextBlock}">
+                                                    <Setter Property="Foreground" Value="#FF000000"/>
+                                                </Style>
+                                            </Grid.Resources>
+
+                                            <TextBlock Grid.Column="0" Text="{Binding Size}"/>
+                                            <TextBlock Grid.Column="1" Text="{Binding DisplayValue}"/>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+
+                                <!--<ControlTemplate.Triggers>
+                                    <Trigger Property="IsDefaulted" Value="true">
+
+                                        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="true">
+
+                                        <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                        <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="true">
+
+                                        <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                        <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="false">
+
+                                        <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                        <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                        <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+
+                                    </Trigger>
+                                </ControlTemplate.Triggers>-->
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+
+            <cctl:ItemConfigButton Grid.Row="0" Grid.Column="1" DataContext="{Binding Slot00Config}"/>
+            <cctl:ItemConfigButton Grid.Row="0" Grid.Column="3" DataContext="{Binding Slot01Config}"/>
+            <cctl:ItemConfigButton Grid.Row="0" Grid.Column="5" DataContext="{Binding Slot02Config}"/>
+                                                                                      
+            <cctl:ItemConfigButton Grid.Row="2" Grid.Column="1" DataContext="{Binding Slot10Config}"/>
+            <cctl:ItemConfigButton Grid.Row="2" Grid.Column="3" DataContext="{Binding Slot11Config}"/>
+            <cctl:ItemConfigButton Grid.Row="2" Grid.Column="5" DataContext="{Binding Slot12Config}"/>
+                                                                                      
+            <cctl:ItemConfigButton Grid.Row="4" Grid.Column="1" DataContext="{Binding Slot20Config}"/>
+            <cctl:ItemConfigButton Grid.Row="4" Grid.Column="3" DataContext="{Binding Slot21Config}"/>
+            <cctl:ItemConfigButton Grid.Row="4" Grid.Column="5" DataContext="{Binding Slot22Config}"/>
+                                                                                      
+            <cctl:ItemConfigButton Grid.Row="6" Grid.Column="1" DataContext="{Binding Slot30Config}"/>
+            <cctl:ItemConfigButton Grid.Row="6" Grid.Column="3" DataContext="{Binding Slot31Config}"/>
+            <cctl:ItemConfigButton Grid.Row="6" Grid.Column="5" DataContext="{Binding Slot32Config}"/>
+                                                                                      
+            <cctl:ItemConfigButton Grid.Row="8" Grid.Column="1" DataContext="{Binding Slot40Config}"/>
+            <cctl:ItemConfigButton Grid.Row="8" Grid.Column="3" DataContext="{Binding Slot41Config}"/>
+            <cctl:ItemConfigButton Grid.Row="8" Grid.Column="5" DataContext="{Binding Slot42Config}"/>
+
+            <cctl:ItemConfigButton Grid.Row="10" Grid.Column="1" DataContext="{Binding Slot50Config}"/>
+            <cctl:ItemConfigButton Grid.Row="10" Grid.Column="3" DataContext="{Binding Slot51Config}"/>
+            <cctl:ItemConfigButton Grid.Row="10" Grid.Column="5" DataContext="{Binding Slot52Config}"/>
+        </Grid>
+    </Grid>
+</UserControl>

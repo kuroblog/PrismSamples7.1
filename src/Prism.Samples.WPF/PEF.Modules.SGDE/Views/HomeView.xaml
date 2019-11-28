@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="PEF.Modules.SGDE.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ctl="clr-namespace:PEF.Modules.SGDE.Controls"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             d:DesignWidth="1080" d:DesignHeight="1920">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <prism:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="175*"/>
+            <RowDefinition Height="339*"/>
+            <RowDefinition Height="710*"/>
+            <RowDefinition Height="520*"/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0" Source="/PEF.Modules.SGDE;component/Assets/Images/Inventory.png" Stretch="Fill"/>
+
+        <Border x:Name="ImageBorder"
+                Grid.Row="2"
+                Background="#FFFFFFFF"
+                Padding="5"
+                CornerRadius="10"
+                Margin="84,45,84,65">
+            <Image Source="/PEF.Modules.SGDE;component/Assets/Images/Cautions.png" Stretch="Fill" x:Name="StepsImage"/>
+        </Border>
+
+        <Image Grid.Row="3" Source="/PEF.Modules.SGDE;component/Assets/Images/UserScan.png" Stretch="Fill"/>
+
+        <StackPanel Grid.Row="1" Margin="84,0" Orientation="Horizontal" x:Name="SizeBoxStackPanel">
+            <StackPanel.Resources>
+                <Style TargetType="ctl:SizeBorderBox">
+                    <Setter Property="Background" Value="#FFFFFFFF"/>
+                    <Setter Property="Foreground" Value="#FF1B9A30"/>
+                    <Setter Property="Margin"  Value="5,0"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ctl:SizeBorderBox">
+                                <Grid Margin="{TemplateBinding BoxMargin}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="119*"/>
+                                        <RowDefinition Height="213*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Border Grid.Row="0" 
+                                            Background="{TemplateBinding Foreground}" 
+                                            CornerRadius="10,10,0,0">
+                                        <TextBlock HorizontalAlignment="Center" 
+                                                   VerticalAlignment="Center"
+                                                   Foreground="{TemplateBinding Background}"
+                                                   Text="{TemplateBinding Title}"
+                                                   FontWeight="Bold"
+                                                   FontSize="38"/>
+                                    </Border>
+
+                                    <Border Grid.Row="1"
+                                            Background="{TemplateBinding Background}"
+                                            CornerRadius="0,0,10,10">
+                                        <TextBlock HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Foreground="#FF000000"
+                                                   Text="{TemplateBinding SizeValue}"
+                                                   FontWeight="Bold"
+                                                   FontSize="50"/>
+                                    </Border>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </StackPanel.Resources>
+
+            <ctl:SizeBorderBox Width="{Binding SqItemI.Width, Mode=OneWay}"
+                               Title="{Binding SqItemI.Size, Mode=OneWay}"
+                               SizeValue="{Binding SqItemI.Quantity, Mode=OneWay}"/>
+
+            <ctl:SizeBorderBox Width="{Binding SqItemII.Width, Mode=OneWay}"
+                               Title="{Binding SqItemII.Size, Mode=OneWay}"
+                               SizeValue="{Binding SqItemII.Quantity, Mode=OneWay}"/>
+
+            <ctl:SizeBorderBox Width="{Binding SqItemIII.Width, Mode=OneWay}"
+                               Title="{Binding SqItemIII.Size, Mode=OneWay}"
+                               SizeValue="{Binding SqItemIII.Quantity, Mode=OneWay}"/>
+
+            <ctl:SizeBorderBox Width="{Binding SqItemIV.Width, Mode=OneWay}"
+                               Title="{Binding SqItemIV.Size, Mode=OneWay}"
+                               SizeValue="{Binding SqItemIV.Quantity, Mode=OneWay}"/>
+
+            <ctl:SizeBorderBox Width="{Binding SqItemV.Width, Mode=OneWay}"
+                               Title="{Binding SqItemV.Size, Mode=OneWay}"
+                               SizeValue="{Binding SqItemV.Quantity, Mode=OneWay}"/>
+
+            <ctl:SizeBorderBox Width="{Binding SqItemVI.Width, Mode=OneWay}"
+                               Title="{Binding SqItemVI.Size, Mode=OneWay}"
+                               SizeValue="{Binding SqItemVI.Quantity, Mode=OneWay}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

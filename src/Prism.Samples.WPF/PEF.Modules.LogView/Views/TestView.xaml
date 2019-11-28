@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="PEF.Modules.LogView.Views.TestView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:com="clr-namespace:PEF.Common;assembly=PEF.Common"
+             xmlns:self="clr-namespace:PEF.Modules.LogView"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <self:TestParameters x:Key="tps"/>
+        <x:Array x:Key="UserProfessions" Type="sys:String">
+            <sys:String>测试1</sys:String>
+            <sys:String>测试2</sys:String>
+        </x:Array>
+    </UserControl.Resources>
+    <Canvas>
+        <Button Content="Print" Canvas.Left="10" Canvas.Top="10" Width="114" Click="OnPrintClickHandler"/>
+        <ComboBox Canvas.Left="10" Canvas.Top="34" Width="114" SelectionChanged="OnProfessionSelectionChangedHandler" SelectedValue="{Binding TestValue, Mode=TwoWay, Source={StaticResource tps}}">
+            <ComboBox.SelectedIndex>0</ComboBox.SelectedIndex>
+            <ComboBox.ItemsSource>
+                <x:Array Type="sys:String">
+                    <sys:String>其他</sys:String>
+                    <sys:String>工人</sys:String>
+                    <sys:String>农民</sys:String>
+                    <sys:String>个体经营者</sys:String>
+                    <sys:String>退(离)休人员</sys:String>
+                    <sys:String>无业人员</sys:String>
+                    <sys:String>自由职业者</sys:String>
+                    <sys:String>现役军人</sys:String>
+                    <sys:String>学生</sys:String>
+                    <sys:String>企业管理人员</sys:String>
+                    <sys:String>职员</sys:String>
+                    <sys:String>专业技术人员</sys:String>
+                    <sys:String>国家公务员</sys:String>
+                </x:Array>
+            </ComboBox.ItemsSource>
+        </ComboBox>
+    </Canvas>
+</UserControl>

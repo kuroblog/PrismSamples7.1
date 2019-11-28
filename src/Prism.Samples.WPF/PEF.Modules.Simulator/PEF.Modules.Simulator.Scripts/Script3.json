@@ -1,0 +1,61 @@
+﻿[
+  {
+    "key": "s1",
+    "action": "UploadDeviceInfo",
+    "name": "FrontInfo",
+    "data": {
+      "Method": "FrontInfo",
+      "Parameter": {
+        "DeviceType": "RecycleBin",
+        "DeviceVersion": "1",
+        "DeviceID": "HSD1"
+      }
+    }
+  },
+  {
+    "key": "s2",
+    "action": "UploadCardInfo",
+    "name": "ReadCard/Admin",
+    "data": {
+      "Method": "ReadCard",
+      "Parameter": {
+        "CardID": "123456",
+        "ReadStyle": "0"
+      }
+    }
+  },
+  {
+    "key": "s3",
+    "action": "UploadCardInfo",
+    "name": "SBReadCard/General",
+    "data": {
+      "Method": "ReadCard",
+      "Parameter": {
+        "CardID": "ceshi",
+        "ReadStyle": "0"
+      }
+    }
+  },
+  {
+    "key": "s4",
+    "action": "ResetDevice",
+    "name": "EndRecycle",
+    "data": {
+      "Method": "EndRecycle",
+      "Parameter": {
+        "GroupID": ""
+      }
+    }
+  },
+  {
+    "key": "s5",
+    "action": "StateReport",
+    "name": "ReturnItem",
+    "data": {
+      "Method": "ReturnItem",
+      "Parameter": {
+        "GroupID": ""
+      }
+    }
+  }
+]

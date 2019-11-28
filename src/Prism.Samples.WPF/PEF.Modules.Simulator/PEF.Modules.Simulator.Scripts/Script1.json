@@ -1,0 +1,63 @@
+﻿[
+  {
+    "key": "s1",
+    "action": "UploadDeviceInfo",
+    "name": "FrontInfo",
+    "data": {
+      "Method": "FrontInfo",
+      "Parameter": {
+        "DeviceType": "ShoeBox",
+        "DeviceVersion": "1",
+        "DeviceID": "XG1"
+      }
+    }
+  },
+  {
+    "key": "s2",
+    "action": "UploadCardInfo",
+    "name": "SBReadCard/Admin",
+    "data": {
+      "Method": "SBReadCard",
+      "Parameter": {
+        "CardID": "123456",
+        "ReadStyle": "0"
+      }
+    }
+  },
+  {
+    "key": "s3",
+    "action": "UploadCardInfo",
+    "name": "SBReadCard/General",
+    "data": {
+      "Method": "SBReadCard",
+      "Parameter": {
+        "CardID": "ceshi",
+        "ReadStyle": "0"
+      }
+    }
+  },
+  {
+    "key": "s4",
+    "action": "UploadDeviceItemState",
+    "name": "DoorState/Open",
+    "data": {
+      "Method": "DoorState",
+      "Parameter": {
+        "DoorId": "41114555",
+        "State": "1"
+      }
+    }
+  },
+  {
+    "key": "s5",
+    "action": "UploadDeviceItemState",
+    "name": "DoorState/Close",
+    "data": {
+      "Method": "DoorState",
+      "Parameter": {
+        "DoorId": "411145556",
+        "State": "0"
+      }
+    }
+  }
+]

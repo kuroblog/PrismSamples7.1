@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="PEF.Modules.ShoeBox.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:com="clr-namespace:PEF.Common;assembly=PEF.Common"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             Background="#FFC2D0E8"
+             mc:Ignorable="d" 
+             d:DesignHeight="844" d:DesignWidth="1280">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <prism:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="349*"/>
+            <RowDefinition Height="535*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="1"
+                Background="#FFFFFFFF"
+                Margin="94,26,94,32"
+                Padding="5"
+                CornerRadius="10">
+            <Image Source="/PEF.Modules.ShoeBox;component/Assets/Images/UserScan.png" 
+                   Stretch="Fill"/>
+        </Border>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="1"
+                    x:Name="CautionBorder"
+                    Margin="28,34,94,0"
+                    Background="#FFFFFFFF"
+                    Padding="5"
+                    CornerRadius="10"
+                    VerticalAlignment="Bottom">
+                <Image Source="/PEF.Modules.ShoeBox;component/Assets/Images/Cautions.png" Stretch="Fill"/>
+            </Border>
+
+            <Grid Grid.Column="0"
+                    Margin="94,34,28,0"
+                    VerticalAlignment="Bottom"
+                    Height="{Binding ActualHeight, ElementName=CautionBorder, Mode=OneWay}">
+                <!--<Image Source="/PEF.Modules.ShoeBox;component/Assets/Images/Cautions.png" Stretch="Fill"/>-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="85*"/>
+                    <RowDefinition Height="226*"/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0"
+                        Background="#FF3091ED"
+                        Padding="5"
+                        CornerRadius="10,10,0,0">
+                    <Image Source="/PEF.Modules.ShoeBox;component/Assets/Images/Title2.png" Stretch="Fill"/>
+                </Border>
+
+                <Border Grid.Row="1"
+                        Background="#FFFFFFFF"
+                        CornerRadius="0,0,10,10">
+                    <TextBlock Text="{Binding Quantity, Mode=OneWay}" 
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontWeight="Bold"
+                               FontSize="100"
+                               Foreground="#FF219D1A"/>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

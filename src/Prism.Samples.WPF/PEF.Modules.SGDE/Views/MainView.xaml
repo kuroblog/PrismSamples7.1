@@ -1,0 +1,106 @@
+﻿<UserControl x:Class="PEF.Modules.SGDE.Views.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:com="clr-namespace:PEF.Common;assembly=PEF.Common"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             d:DesignWidth="1080" d:DesignHeight="1920">
+
+    <UserControl.Resources>
+        <!--<ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PEF.Common;component/Assets/Styles/Buttons.xaml"/>
+                <ResourceDictionary Source="/PEF.Common;component/Assets/Styles/TextBlocks.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>-->
+    </UserControl.Resources>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <prism:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.Resources>
+            <!-- Not use on image view -->
+            <!--<Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>-->
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="130*"/>
+            <RowDefinition Height="1744*"/>
+            <RowDefinition Height="46*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Custom -->
+        <!--<DockPanel Grid.Row="0">
+            <DockPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF5ACEFF"/>
+                    <GradientStop Color="#FF2783E9" Offset="0.8"/>
+                </LinearGradientBrush>
+            </DockPanel.Background>
+
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="10,0,0,0">
+                <Image Source="/PEF.Modules.SGDE;component/Assets/Images/Recycle-Bin.png" Width="84" Height="84" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Product}" FontSize="40"/>
+                <Border Margin="20,30" BorderThickness="1" BorderBrush="White"/>
+                <TextBlock Text="{Binding Title}" FontSize="30" Margin="10,0"/>
+            </StackPanel>
+
+            <Button DockPanel.Dock="Right" Margin="0,0,10,0" Command="{Binding SettingCommand}">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Grid Width="84" Height="84">
+                            <Image Source="/PEF.Modules.SGDE;component/Assets/Images/Settings-02.png"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Grid></Grid>
+        </DockPanel>-->
+        <!-- or -->
+        <!-- Image -->
+        <Image Grid.Row="0" 
+               Source="/PEF.Modules.SGDE;component/Assets/Images/Title.png" Stretch="Fill"/>
+
+        <!-- Custom -->
+        <!--<DockPanel Grid.Row="2" Background="#FF2783E9">
+            <TextBlock DockPanel.Dock="Left" Margin="20,0,0,0">
+                <Run Text="机器号："/>
+                <Run Text="{Binding DeviceNo, Mode=OneWay}"/>
+                <Run Text="   版本号："/>
+                <Run Text="{Binding Version, Mode=OneWay}"/>
+                <Run Text="   故障维修："/>
+                <Run Text="{Binding ServiceCall, Mode=OneWay}"/>
+            </TextBlock>
+
+            <TextBlock DockPanel.Dock="Right" Margin="0,0,20,0">
+                <Run Text="技术支持："/>
+                <Run Text="{Binding Company, Mode=OneWay}"/>
+            </TextBlock>
+
+            <Grid></Grid>
+        </DockPanel>-->
+        <!-- or -->
+        <!-- Image -->
+        <Image Grid.Row="2" 
+               Source="/PEF.Modules.SGDE;component/Assets/Images/Footer.png" Stretch="Fill"/>
+        
+        <Border Grid.Row="1" Background="#FFC2D0E8">
+            <ContentControl prism:RegionManager.RegionName="{x:Static com:RegionNames.Home}"
+                            VerticalContentAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"/>
+        </Border>
+    </Grid>
+</UserControl>

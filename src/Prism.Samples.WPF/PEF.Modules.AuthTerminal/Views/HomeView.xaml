@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="PEF.Modules.AuthTerminal.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:com="clr-namespace:PEF.Common;assembly=PEF.Common"
+             xmlns:cov="clr-namespace:PEF.Modules.AuthTerminal.Converters"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             Background="#FFC2D0E8"
+             mc:Ignorable="d" 
+             d:DesignHeight="844" d:DesignWidth="1280">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <prism:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="114*"/>
+            <ColumnDefinition Width="1052*"/>
+            <ColumnDefinition Width="114*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="109*"/>
+            <RowDefinition Height="174*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="460*"/>
+            <RowDefinition Height="66*"/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.Column="1"
+               Grid.Row="3" Source="/PEF.Modules.AuthTerminal;component/Assets/Images/Img3.png" Stretch="Fill"/>
+
+        <Grid Grid.Column="1"
+              Grid.Row="1"
+              Background="#FF2D394E">
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="#FF08F6FF"/>
+                </Style>
+                <cov:ShowAuthMessageConverter x:Key="ShowAuthMessageConverter"/>
+            </Grid.Resources>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding IsShowAuthMessage, Converter={StaticResource ShowAuthMessageConverter}, ConverterParameter=0}">
+                <TextBlock Text="{Binding TimeInfo, Mode=OneWay}" VerticalAlignment="Center" FontSize="70"/>
+                <Grid Margin="30,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="{Binding WeekInfo, Mode=OneWay}" FontSize="50"/>
+                    <TextBlock Grid.Row="1" Text="{Binding DateInfo, Mode=OneWay}" FontSize="50"/>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding IsShowAuthMessage, Converter={StaticResource ShowAuthMessageConverter}, ConverterParameter=1}">
+                <TextBlock FontSize="70">
+                    <Run Foreground="#FFFFFFFF" Text="{Binding UserName, Mode=OneWay}"/>
+                    <Run Foreground="#FFFFFFFF" Text=":"/>
+                    <Run Foreground="#FFB0F95A" Text="授权成功"/>
+                    <Run Foreground="#FFFFFFFF" Text="{Binding RoleName, Mode=OneWay}"/>
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

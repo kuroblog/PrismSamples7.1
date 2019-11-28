@@ -1,0 +1,26 @@
+﻿[
+  {
+    "key": "Script1",
+    "port": 8080,
+    "name": "鞋柜",
+    "url": "hoschange/ShoeBox"
+  },
+  {
+    "key": "Script2",
+    "port": 8080,
+    "name": "授权终端",
+    "url": "hoschange/Auth"
+  },
+  {
+    "key": "Script3",
+    "port": 8080,
+    "name": "回收桶",
+    "url": "hoschange/RecyclingBin"
+  },
+  {
+    "key": "Script4",
+    "port": 8080,
+    "name": "发衣柜",
+    "url": "hoschange/Wardrobe"
+  }
+]

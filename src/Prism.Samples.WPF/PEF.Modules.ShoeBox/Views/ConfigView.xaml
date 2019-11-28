@@ -1,0 +1,82 @@
+﻿<UserControl x:Class="PEF.Modules.ShoeBox.Views.ConfigView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:com="clr-namespace:PEF.Common;assembly=PEF.Common"
+             xmlns:ctl="clr-namespace:PEF.Common.Controls;assembly=PEF.Common"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             Background="#FFC2D0E8"
+             mc:Ignorable="d" 
+             d:DesignHeight="844" d:DesignWidth="1280">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PEF.Common;component/Assets/Styles/Buttons.xaml"/>
+                <!--<ResourceDictionary Source="/PEF.Common;component/Assets/Styles/TextBlocks.xaml"/>-->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <prism:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Border Background="#FFFFFFFF"
+                Margin="92,66,92,60"
+                CornerRadius="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="400*"/>
+                    <RowDefinition Height="320*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <Grid.Resources>
+                    <Style TargetType="ctl:CustomButton" BasedOn="{StaticResource DefaultCustomButton}">
+                        <Setter Property="Foreground" Value="#FFFFFFFF"/>
+                        <Setter Property="Background" Value="#FF278DDF"/>
+                        <Setter Property="FontSize" Value="38"/>
+                        <Setter Property="CustomCornerRadius" Value="10"/>
+                        <Setter Property="Width" Value="360"/>
+                        <Setter Property="Height" Value="200"/>
+                    </Style>
+                </Grid.Resources>
+
+                <ctl:CustomButton Grid.Row="0" 
+                                  Grid.Column="0" 
+                                  Content="检查更新"
+                                  Margin="0,0,34,0"
+                                  VerticalAlignment="Bottom" 
+                                  HorizontalAlignment="Right"/>
+
+                <ctl:CustomButton Grid.Row="0"
+                                  Grid.Column="1"
+                                  Content="管理员开箱"
+                                  Command="{Binding AdminOpenCommand}"
+                                  Margin="34,0,0,0"
+                                  VerticalAlignment="Bottom" 
+                                  HorizontalAlignment="Left"/>
+
+                <ctl:CustomButton Grid.Row="1"
+                                  Grid.Column="0"
+                                  Grid.ColumnSpan="2"
+                                  Content="返回" 
+                                  Command="{Binding ReturnCommand}"
+                                  Height="90"
+                                  Margin="0,0,0,58"
+                                  Background="#FFE49B34"
+                                  VerticalAlignment="Bottom"/>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
