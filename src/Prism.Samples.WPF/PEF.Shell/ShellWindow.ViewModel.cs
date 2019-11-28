@@ -129,7 +129,7 @@ namespace PEF.Shell
             {
                 Title = arg.Title,
                 Content = arg.Content
-            }, result => arg.Callback(result)));
+            }, result => arg?.Callback(result)));
         }
 
         private void ConfirmPopupHandler(PopupEventArg<IConfirmation> arg)
@@ -138,7 +138,7 @@ namespace PEF.Shell
             {
                 Title = arg.Title,
                 Content = arg.Content
-            }, result => arg.Callback(result)));
+            }, result => arg?.Callback(result)));
         }
 
         private void CustomMessagePopupHandler(PopupEventArg<INotification> arg)
@@ -147,7 +147,7 @@ namespace PEF.Shell
             {
                 Title = arg.Title,
                 Content = arg.Content
-            }, result => arg.Callback(result)));
+            }, result => arg?.Callback(result)));
         }
 
         private void CustomPopupHandler(PopupEventArg<ICustomPopupNotification<string>> arg)
@@ -156,7 +156,7 @@ namespace PEF.Shell
             {
                 Title = arg.Title,
                 Content = arg.Content
-            }, result => arg.Callback(result)));
+            }, result => arg?.Callback(result)));
         }
         #endregion
 

@@ -1,0 +1,36 @@
+﻿[
+  {
+    "key": "s1",
+    "name": "FrontInfo",
+    "script": {
+      "method": "FrontInfo",
+      "arg": {
+        "DeviceType": "ShoeBox",
+        "DeviceVersion": "1",
+        "DeviceID": "XG1"
+      }
+    }
+  },
+  {
+    "key": "s2",
+    "name": "SBReadCard/Admin",
+    "script": {
+      "method": "SBReadCard",
+      "arg": {
+        "CardID": "123456",
+        "ReadStyle": "0"
+      }
+    }
+  },
+  {
+    "key": "s3",
+    "name": "SBReadCard/General",
+    "script": {
+      "method": "SBReadCard",
+      "arg": {
+        "CardID": "ceshi",
+        "ReadStyle": "0"
+      }
+    }
+  }
+]

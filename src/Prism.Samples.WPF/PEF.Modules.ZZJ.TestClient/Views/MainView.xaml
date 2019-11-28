@@ -60,15 +60,64 @@
     </UserControl.Resources>
 
     <DockPanel>
-        <GroupBox Header="interface" DockPanel.Dock="Top">
+        <GroupBox Header="test-interface" DockPanel.Dock="Top">
             <DockPanel>
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
-                    <Button Content="Reset" MinWidth="20" Command="{Binding ResetCommand}"/>
+                    <Button Content="Reload" MinWidth="20" Command="{Binding ReloadCommand}"/>
                     <Button Content="Debug" MinWidth="20" Command="{Binding DebugCommand}"/>
                     <Button Content="?" MinWidth="20" Command="{Binding HelperCommand}"/>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal"></StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="items:" Grid.Column="0"/>
+                    <ComboBox ItemsSource="{Binding ScriptItems, Mode=OneWay}" 
+                              DisplayMemberPath="Name" 
+                              SelectedValue="Key" 
+                              SelectedItem="{Binding SelectedScriptItem, Mode=TwoWay}" 
+                              SelectedIndex="0" 
+                              Grid.Column="1">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <prism:InvokeCommandAction Command="{Binding SelectedServerChangedCommand}" CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ComboBox}}}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
+
+                    <TextBlock Text="name:" Margin="20,0,0,0" Grid.Column="2"/>
+                    <TextBox Text="{Binding SelectedScriptItem.Key, Mode=TwoWay}" 
+                             IsReadOnly="True"
+                             Grid.Column="3"/>
+
+                    <TextBlock Text="port:" Margin="20,0,0,0" Grid.Column="4"/>
+                    <TextBox Text="{Binding SelectedScriptItem.Port, Mode=TwoWay}"
+                             Grid.Column="5"/>
+
+                    <TextBlock Text="uri:" Margin="20,0,0,0" Grid.Column="6"/>
+                    <TextBox Text="{Binding SelectedScriptItem.Uri, Mode=TwoWay}"
+                             Margin="0,0,200,0"
+                             Grid.Column="7"/>
+                </Grid>
+            </DockPanel>
+        </GroupBox>
+
+        <GroupBox Header="script-item full path" DockPanel.Dock="Top">
+            <DockPanel>
+                <!--<TextBlock Margin="50,0,0,0" DockPanel.Dock="Right">
+                    <Run Text="state:"/>
+                    <Run Text="{Binding ScriptItemPath, Mode=OneWay}"/>
+                </TextBlock>-->
+                <TextBox Text="{Binding ScriptItemPath, Mode=TwoWay}"/>
             </DockPanel>
         </GroupBox>
 

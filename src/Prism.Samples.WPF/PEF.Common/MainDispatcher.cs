@@ -24,32 +24,27 @@ namespace PEF.Common
 
         public IContainerProvider Container => app.Container;
 
-        public void ShowMessage(string message, string title = "温馨提示", Action<INotification> action = null)
-        {
-            Container?.Resolve<IEventAggregator>()?.GetEvent<MainNotificationPopupEvent>()?.Publish(new PopupEventArg<INotification>
-            {
-                Title = title,
-                Content = message,
-                Callback = action
-            });
-        }
+        public void ShowMessage(string message, string title = "温馨提示", Action<INotification> action = null) =>
+            Container?
+                .Resolve<IEventAggregator>()?
+                .GetEvent<MainNotificationPopupEvent>()?
+                .Publish(new PopupEventArg<INotification>
+                {
+                    Title = title,
+                    Content = message,
+                    Callback = action
+                });
 
-        //eventAggregator.GetEvent<MessagePopupEvent>().Publish(new PopupEventArg<INotification>
-        //    {
-        //        Title = title,
-        //        Content = message,
-        //        Callback = new Action<INotification>(res => { })
-        //    });
-
-        public void ShowMessage<TCallback>(string message, string title = "info", Action<TCallback> callbackHandler = null)
-            where TCallback : INotification
-        {
-            Container?.Resolve<IEventAggregator>()?.GetEvent<PubSubEvent<PopupEventArg<TCallback>>>()?.Publish(new PopupEventArg<TCallback>
-            {
-                Title = title,
-                Content = message,
-                Callback = callbackHandler
-            });
-        }
+        public void ShowMessage<TPubSubEvent>(string message, string title = "message", Action<INotification> callbackHandler = null)
+            where TPubSubEvent : PubSubEvent<PopupEventArg<INotification>>, new() =>
+            Container?
+                .Resolve<IEventAggregator>()?
+                .GetEvent<TPubSubEvent>()?
+                .Publish(new PopupEventArg<INotification>
+                {
+                    Title = title,
+                    Content = message,
+                    Callback = callbackHandler
+                });
     }
 }
