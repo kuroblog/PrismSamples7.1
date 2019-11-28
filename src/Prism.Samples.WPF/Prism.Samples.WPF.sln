@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEF.Modules.Simulator", "PE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEF.Shell", "PEF.Shell\PEF.Shell.csproj", "{DB3DF5F3-8E77-4BAF-825E-ED70CFEFB010}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEF.Modules.ZZJ.TestClient", "PEF.Modules.ZZJ.TestClient\PEF.Modules.ZZJ.TestClient.csproj", "{0D23888A-3EB2-4135-8966-D6B76B684237}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +87,10 @@ Global
 		{DB3DF5F3-8E77-4BAF-825E-ED70CFEFB010}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB3DF5F3-8E77-4BAF-825E-ED70CFEFB010}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB3DF5F3-8E77-4BAF-825E-ED70CFEFB010}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D23888A-3EB2-4135-8966-D6B76B684237}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D23888A-3EB2-4135-8966-D6B76B684237}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D23888A-3EB2-4135-8966-D6B76B684237}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D23888A-3EB2-4135-8966-D6B76B684237}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,6 +107,7 @@ Global
 		{4772C566-E590-44EC-A1A2-6686E53475C6} = {918EC7E8-B072-48E2-8EA1-D6C2079A77F1}
 		{4ECEF961-512E-4E2E-892A-2AA83FAA8E27} = {918EC7E8-B072-48E2-8EA1-D6C2079A77F1}
 		{46F2A6F8-98E3-450B-A55B-F4CF047B8B71} = {918EC7E8-B072-48E2-8EA1-D6C2079A77F1}
+		{0D23888A-3EB2-4135-8966-D6B76B684237} = {918EC7E8-B072-48E2-8EA1-D6C2079A77F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DA884261-91FB-485A-893D-873F177F5D0B}
